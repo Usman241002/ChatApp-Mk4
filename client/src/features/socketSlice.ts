@@ -14,7 +14,8 @@ const socketSlice = createSlice({
       state.isConnected = action.payload.isConnected;
     },
     clearSocket(state) {
-      return initialState;
+      state.socketId = null;
+      state.isConnected = false;
     },
   },
 });

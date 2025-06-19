@@ -1,5 +1,5 @@
-import { ArrowBack, PersonOutline } from "@mui/icons-material";
-import { AppBar, IconButton, Stack, Toolbar, Typography } from "@mui/material";
+import { ArrowBack } from "@mui/icons-material";
+import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
