@@ -28,7 +28,7 @@ export default function Layout() {
             flexGrow: 1,
             flexDirection: "column",
             alignItems: "center",
-            p: { xs: 2, sm: 2, md: 3 },
+            pt: { xs: 2, sm: 2, md: 3 },
             height: "100%",
             overflow: "hidden",
           }}
