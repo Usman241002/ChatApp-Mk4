@@ -69,20 +69,37 @@ export default function ChatPage() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        alignItems: "space-around",
+        flexGrow: 1,
         width: "100%",
-        height: "100%",
+        maxWidth: "100%",
+        maxHeight: "100%",
+        gap: 2,
+        overflow: "hidden",
       }}
     >
-      <UserCard
-        key={id}
-        id={id}
-        username={username}
-        age={age}
-        gender={gender}
-        country={country}
-      />
-      <Stack spacing={1} sx={{ width: "100%", height: "75%", p: 1 }}>
+      <Box sx={{ flexShrink: 0 }}>
+        <UserCard
+          key={id}
+          id={id}
+          username={username}
+          age={age}
+          gender={gender}
+          country={country}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          flexGrow: 1,
+          overflowY: "auto",
+          display: "flex",
+          flexDirection: "column",
+          gap: 0.5,
+          px: 1, // Add some padding for better mobile experience
+          minHeight: 0, // Important for flex child to shrink
+        }}
+      >
         {messages &&
           messages.map((message, index) => (
             <Typography
@@ -94,14 +111,17 @@ export default function ChatPage() {
                 borderRadius: 3,
                 py: 0.5,
                 px: 1,
+                whiteSpace: "normal",
+                overflowWrap: "break-word",
               }}
             >
               <b>{message.from === sender.id ? "You" : username}</b>:{" "}
               {message.message}
             </Typography>
           ))}
-      </Stack>
-      <Stack direction="row">
+      </Box>
+
+      <Stack direction="row" sx={{ flexShrink: 0, gap: 1 }}>
         <TextField
           label="Message"
           variant="outlined"
@@ -110,12 +130,25 @@ export default function ChatPage() {
           fullWidth
           autoComplete="off"
           required
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              if (message.trim()) {
+                handleClick();
+              }
+            }
+          }}
+          slotProps={{
+            htmlInput: { maxLength: 100 },
+          }}
         />
         <Button
           variant="contained"
           color="primary"
           onClick={handleClick}
+          disabled={!message.trim()}
           endIcon={<Send />}
+          sx={{ minWidth: "auto", px: 2 }}
         >
           Send
         </Button>

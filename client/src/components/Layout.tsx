@@ -13,10 +13,11 @@ export default function Layout() {
       <Stack
         direction={{ xs: "column-reverse", sm: "column-reverse", md: "row" }}
         sx={{
-          mt: { xs: 7, sm: 8 },
+          display: "flex",
           justifyContent: "space-between",
-          width: "100%",
-          height: "100%",
+          width: "100vw",
+          height: `calc(100vh - ${isMobile ? "56px" : "64px"})`,
+          mt: { xs: 7, sm: 8 },
         }}
       >
         {isMobile ? <BottomNav /> : <SideNav />}
@@ -24,11 +25,12 @@ export default function Layout() {
         <Box
           sx={{
             display: "flex",
+            flexGrow: 1,
             flexDirection: "column",
             alignItems: "center",
-            width: "100%",
+            p: { xs: 2, sm: 2, md: 3 },
             height: "100%",
-            p: { xs: 0, sm: 0, md: 3 },
+            overflow: "hidden",
           }}
         >
           <Outlet />

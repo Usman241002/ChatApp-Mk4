@@ -16,10 +16,12 @@ export default function UserCard({
       component={Link}
       to={`/${username}`}
       sx={{
+        display: "block",
         width: "100%",
         borderRadius: 4,
         textDecoration: "none",
         boxShadow: 2,
+        backgroundColor: "#FFFFFF",
         transition: "box-shadow 0.3s ease, transform 0.2s ease",
         "&:hover": {
           boxShadow: 6,
