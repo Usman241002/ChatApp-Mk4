@@ -70,7 +70,7 @@ export default function App() {
               <Route path="/" element={<UsersPage users={users} />} />
               <Route path="/:username" element={<ChatPage />} />
               <Route path="/inbox" element={<InboxPage />} />
-              <Route path="/search" element={<SearchPage />} />
+              <Route path="/search" element={<SearchPage users={users} />} />
             </Route>
           )}
         </Routes>

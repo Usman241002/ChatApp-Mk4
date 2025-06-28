@@ -23,6 +23,12 @@ export default function InboxPage() {
       >
         New Messages
       </Typography>
+
+      {inbox.length === 0 && (
+        <Typography variant="h6" align="center">
+          No new messages
+        </Typography>
+      )}
       <Stack spacing={1}>
         {inbox.map((conversation) => (
           <UserCard
